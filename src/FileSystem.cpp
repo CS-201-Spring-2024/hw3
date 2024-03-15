@@ -50,7 +50,7 @@ void FileSystem::PrintFileEntry()
         cout << "Filename: " << entry.Filename << "\n";
         cout << "Type: " << entry.Type << "\n";
         cout << "Size:" << entry.Size << "\n";
-        cout << "createdOn: " << entry.accessedOn << "\n";
+        cout << "accessedOn: " << entry.accessedOn << "\n";
         cout << "modifiedOn: " << entry.modifiedOn << "\n";
         cout << "path: " << entry.path << "\n";
         cout << "\n";
