@@ -1,0 +1,300 @@
+\documentclass{article}
+
+\usepackage{url}
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{3d}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{braket}
+\usepackage{enumerate}
+\usepackage{paralist}
+\usepackage{listings}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{Habib University}
+\chead{\hmwkClass, \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\definecolor{mGreen}{rgb}{0,0.6,0}
+\definecolor{mGray}{rgb}{0.5,0.5,0.5}
+\definecolor{mPurple}{rgb}{0.58,0,0.82}
+\definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{CStyle}{
+    backgroundcolor=\color{backgroundColour},
+    commentstyle=\color{mGreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{mGray},
+    stringstyle=\color{mPurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    language=C
+}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+	\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+	\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+	\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+	\stepcounter{#1}
+	\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+	\ifnum#1>0
+	\setcounter{homeworkProblemCounter}{#1}
+	\fi
+	\section{Problem \arabic{homeworkProblemCounter}}
+	\setcounter{partCounter}{1}
+	\enterProblemHeader{homeworkProblemCounter}
+}{
+	\exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Assignment\ \#3}
+\newcommand{\hmwkDueDate}{March 30, 2024, 11.59pm}
+\newcommand{\hmwkClass}{CS 201 - Data Structures II}
+\newcommand{\hmwkClassInstructor}{Muhammad Mobeen Movania (L1),\\ Syeda Saleha Raza (L2),\\ Faisal Alvi (L3, L4),\\ Abdullah Zafar (L5).}
+\newcommand{\hmwkAuthorName}{\textbf{Student 1 Name, ID} \and \textbf{Student 2 Name, ID}}
+
+%
+% Title Page
+%
+
+\title{
+	\vspace{2in}
+	\textmd{\textbf{\hmwkClass:\\ \hmwkTitle}}\\
+	\normalsize\vspace{0.1in}\small{\hmwkClassInstructor}\\
+	\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+	\vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+	
+\maketitle
+	
+\pagebreak
+\section{Instructions}
+This assignment document consists of two problems.
+
+\begin{itemize} 
+	\item \underline{Problem 1} is a theoretical question which requires analysis. It should be completed and submitted within this document as a pdf on Canvas. This problem is worth 20 points.
+	\item \underline{Problem 2} is a programming based question which requires implementation. It must be submitted by pushing all your code files to the Github repository. This problem is worth 40 points.
+
+\end{itemize}
+\newpage
+\begin{homeworkProblem}
+(20 points) [\textbf{Analysis}] You have been maintaining separate indexes for each drive on your hard disk. Now, you have decided to have a unified index for the whole file system. Rather than re-creating the index from scratch, you want to combine existing indexes in an efficient way. Write pseudocode of the algorithm that can combine two indexes with the complexity of $O (m + n)$. 
+
+\end{homeworkProblem}
+\bigskip
+
+\newpage
+\begin{homeworkProblem} (40 points) [\textbf{Implementing File System Index using AVL and BST}] 
+
+Indexes are used across various types of software, including the operating system, database management system (DBMS) and applications. For example, the file system index in an operating system contains an entry for each file name and the starting location of the file on disk. Self-balancing trees have been a popular choice for creating such indexes. In this question, you will build your mini file explorer that will use Binary Search Tree (BST) and AVL tree-based indexes to efficiently search for files on your file system. The question involves building and maintaining these indexes, using them for your mini file explorer, and comparing the performance of BST vs AVL index on a given dataset.
+
+\subsection{Dataset}
+
+You have been given three datasets and their details are as follows:
+\begin{enumerate}
+\item Small dataset which contains 1,000 records and is represented by the \texttt{Small.csv} file.
+\item Medium dataset which contains 10,000 records and is represented by the \texttt{Medium.csv} file.
+\item Large dataset which contains 50,000 records and is represented by the \texttt{Large.csv} file.
+\end{enumerate}
+
+In addition, you have been given a sample dataset which contains 6 enteries for testing purposes.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[htbp]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Filename & Type & Size  & modifiedOn        & createdOn           & path                                            \\ \hline
+15420-8  & zip  & 99661 & 2016-10-14T21:21:17 & 2005-03-21T12:35:18 & /gutenberg/www.gutenberg.lib.md.us/15420-8.zip  \\ \hline
+15420-8  & zip  & 99761 & 2016-10-14T21:21:17 & 2005-03-25T12:35:18 & /gutenberg1/www.gutenberg.lib.md.us/15420-8.zip \\ \hline
+15420-9  & zip  & 99631 & 2016-10-14T21:21:17 & 2005-03-22T12:35:18 & /gutenberg/www.gutenberg.lib.md.us/15420-9.zip  \\ \hline
+15420-10 & zip  & 99561 & 2016-10-14T21:21:17 & 2005-03-23T12:35:18 & /gutenberg/www.gutenberg.lib.md.us/15420-10.zip \\ \hline
+15420-11 & zip  & 99961 & 2016-10-14T21:21:17 & 2005-03-24T12:35:18 & /gutenberg/www.gutenberg.lib.md.us/15420-11.zip \\ \hline
+15420-12 & zip  & 99861 & 2016-10-14T21:21:17 & 2005-03-25T12:35:18 & /gutenberg/www.gutenberg.lib.md.us/15420-12.zip \\ \hline
+
+\end{tabular}%
+}
+\caption{Sample Dataset}
+\end{table}
+
+
+\subsection{Code Structure}
+The code base contains four main classes and their description are as follows:
+\begin{enumerate}
+\item The \texttt{FileSystem} class provides the functionality of loading file system data from a CSV file, and then storing it into a vector so that it can be later used to create File System Index.
+
+\item The \texttt{BSTIndex} class represents a binary search tree index structure designed to efficiently organize and search file system data. It utilizes a binary search tree composed of TreeNode structures, each containing a key for indexing purposes and a vector storing the indices of file system entries associated with that key. This class provides methods for creating the index, adding new entries, and searching a particular entry.
+
+\item The \texttt{AVLIndex} class extends the functionality of {BSTIndex} to implement an AVL tree-based index structure, which automatically balances itself to maintain optimal performance during insertion and deletion operations. It inherits from BSTIndex and overrides the add  methods to incorporate AVL tree balancing logic. 
+
+\item The \texttt{FileExplorer} class implements a File System Explorer. It maintains a index based on Name and CreatedOn using either AVL or BST.  It provides methods for searching files by name, date, name and date combination, name and size combination, and files created during a specified date range.
+
+
+\end{enumerate}
+
+
+\subsection{Required Tasks}
+\begin{itemize}
+\item Implement BST and AVL trees to build and maintain indexes on given file data. The index will be created on a given key and each node of the index will store a list of file records having that key. To perform this task, you have to implement the following methods in the \texttt{BSTIndex} class: 
+\begin{itemize}
+\item	\texttt{void createIndex(vector<FileSystemEntry> \&data, string key)} – will create index on the given key in files data
+\item	\texttt{void add(int i, string key)} – will add a new key to the index along with the details of files containing that key.
+
+\end{itemize}
+\item
+Searching works the same way in both BST and AVL tree. Implement the following generic method in the BSTIndex class.
+\begin{itemize}
+\item  \texttt{std::pair<std::vector<int>, int> search(string key)} – traverses the index to return details of a given key. This method also returns number of nodes visited while searching for the given key.
+\end{itemize}
+\item 
+Now you will use these indexes to build your mini file explorer. Your file explorer will use either BST/AVLIndex to perform searches on various criteria. The explorer will create index on \texttt{FileName} and \texttt{lastModifiedOn} and provides following options to search for files:
+\begin{itemize}
+\item \texttt{FileExplorer(string type, string csv\_file)} – the constructor that creates indexes of the given type on filename and lastModified date. 
+\item	\texttt{void findbyName(string filename, string output\_path)}– Saves the file paths having the given name in a text file at the provided directory.
+\item	\texttt{void findbyDate(string date, string output\_path)} - Saves the file paths that  were last modified on the given date in a text file at the provided directory
+\item	\texttt{void findbyNameandDate(string filename, string date, string output\_path)}   - This method first queries over both indexes separately for the given name and date and then saves the intersection of their results in a text file at the provided directory. 
+\item	\texttt{void findbyNameandSize(string filename, int size, string output\_path)}– This method first finds the files of the given name and then further filters them on size. The results are then saved in a text file at the provided directory.
+\item	\texttt{void findFilesCreatedDuring(string date1, string date2, string output\_path)} – This method finds the files last modified during the given data range (inclusive) and saves the file paths in a text file at the provided directory. \\
+\textbf{Note: AVL trees are not ideal for range-based queries. However, you have no other choice. Let’s not iterate over the whole tree and try to traverse as few nodes as possible to perform this task.}
+\end{itemize}
+
+e)	AVL trees are known to have better performance than BST as they are self-balancing and hence do not get skewed. Let’s investigate this yourself using the given dataset. This dataset has been adapted from the Kaggle dataset on \url{https://www.kaggle.com/datasets/cogitoe/crab}
+
+\end{itemize}
+
+\vspace{0.5cm}
+
+\subsection{Grading Criteria}
+The rubric for this homework is as follows:
+\begin{itemize}
+\item 10 points (BST) (Correctness +  Implementation)
+\item 15 points (AVL) (Correctness + Implementation)
+\item 15 points (FileExplorer) (Correctness + Implementation)
+\end{itemize}
+ 
+Penalties
+\begin{itemize}
+\item (-5) Code compiles with warnings
+\item (-5) OOP Inheritance not applied correctly between AVL and BST
+\item (-5) Implementation does not match the provided function signature.
+\item (-5) GitHub repository does not follow appropriate structure. All the code files should be in the code folder and output files in the output folder.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Compilation Guidelines:} Before proceeding with submission, kindly verify that your code compiles utilizing the \textbf{C++17} standard.  
+
+
+\end{homeworkProblem}
+
+\vspace{0.5cm}
+
+Due date: March 30, 2024, 11:59 PM
+
+
+
+\end{document}
+
