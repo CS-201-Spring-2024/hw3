@@ -9,23 +9,30 @@
 
 using namespace std;
 
-struct FileSystemEntry
-{
+
+struct FileSystemEntry {
     string Filename;
     int Size;
-    string accessedOn;
+    string createdOn;
     string modifiedOn;
     string Type;
     string path;
+
 };
 
-class FileSystem
-{
+class FileSystem {
 
 public:
-    vector<FileSystemEntry> entries;
 
-    void LoadFilesFromCsv(const string &csv_file);
-    string ParseTimestamp(const string &timestampStr);
-    void PrintFileEntry();
+
+
+vector<FileSystemEntry> entries;
+
+void load_files_from_csv(const string& csv_file);
+string parse_timestamp(const string& timestampStr);
+
+
+
+void print_file_entry();
+
 };
